@@ -1,9 +1,11 @@
 # Uruchomienie skryptu
 
 
-```go isntall
+```
+go isntall
 go mod tidy
-go run main.go```
+go run main.go
+```
 
 # Jira Token
 Aby wygenerowac swoj token wejdz na strone:
