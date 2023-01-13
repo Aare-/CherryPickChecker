@@ -129,6 +129,8 @@ func main() {
 	gitMainBranchName := os.Getenv("MAIN_BRANCH")
 	completedTasksChannel := make(chan *[]string, 1)
 
+	fmt.Printf("Jira tag: %s\nBranch name: %s\nMain branch name: %s\n\n", jiraTagName, gitBranchName, gitMainBranchName)
+
 	// Make sure we trust the repo we wanna check
 	runcmd(fmt.Sprintf("git config --global --add safe.directory %s", os.Getenv("REPO_PATH")), true)
 	branches := [...]string{gitBranchName, gitMainBranchName}
