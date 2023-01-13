@@ -149,12 +149,9 @@ func main() {
 
 	testSet := make(map[string]bool)
 	for _, e := range *missingCommits {
-
-		if _, prs := testSet[e]; prs {
-			panic("Duplicated ID in missing commits - This should not happen")		
+		if _, prs := testSet[e]; !prs {
+			testSet[e] = true
 		}
-
-		testSet[e] = true
 	}
 
 	noIssues := true
