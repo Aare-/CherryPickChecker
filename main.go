@@ -102,7 +102,7 @@ func contains(s []string, str string) bool {
 
 func prepareSources(sources [2]string) {
 	for _, source := range sources {
-		makeSureMainBranchIsThereCommand := fmt.Sprintf("git -C %s fetch origin %s:%s", os.Getenv("REPO_PATH"), source, source)
+		makeSureMainBranchIsThereCommand := fmt.Sprintf("git -C %s pull origin %s:%s", os.Getenv("REPO_PATH"), source, source)
 		runcmdIgnoreErrors(makeSureMainBranchIsThereCommand, true)
 	}
 }
@@ -181,14 +181,14 @@ func runcmdIgnoreErrors(cmd string, shell bool) {
         _, err := exec.Command("bash", "-c", cmd).Output()
 
         if err != nil {
-        	//fmt.Printf(" - Exception (ignored): %s\n", err)
+        	fmt.Printf(" - Exception (ignored): %s for command %s\n", err, cmd)
         }
         return
     }
 
     _, err := exec.Command(cmd).Output()
     if err != nil {
-    	//fmt.Printf(" - Exception (ignored): %s\n", err)
+    	fmt.Printf(" - Exception (ignored): %s for command %s\n", err, cmd)
     }
 
     return
